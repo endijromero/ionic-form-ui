@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "ionic-form-ui",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
