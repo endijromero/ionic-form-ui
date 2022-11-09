@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-back-sharp">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Inicio de sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <form (ngSubmit)="login()"> -->
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="full">
+          <ion-label position="floating">Correo</ion-label>
+          <ion-input type="text" required [(ngModel)]="correo"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="full">
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input type="password" required [(ngModel)]="contrasena"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block" (click)="login()">Aceptar</ion-button>
+        <span class="divider line one-line">o</span>
+        <a [routerLink]="['/forgot-password']" class="small-text">Recuperar contraseña</a>
+        <!-- <ion-buttons slot="end">
+          <ion-toggle id="rememberToggle" slot="end" (ionChange)="toggleRemember($event)"></ion-toggle>
+        </ion-buttons> -->
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <!-- <ion-buttons slot="end"> -->
+        <ion-toggle id="rememberToggle" slot="end" (ionChange)="toggleRemember($event)"></ion-toggle>
+        <!-- </ion-buttons> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- </form> -->
+</ion-content>
