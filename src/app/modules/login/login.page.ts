@@ -12,6 +12,7 @@ import { AlertController } from '@ionic/angular';
 export class LoginPage implements OnInit {
 
   token: string = '123456';
+  tokenAdmin: string = '1234567';
   correo: string;
   contrasena: string;
   rememberToggle: boolean

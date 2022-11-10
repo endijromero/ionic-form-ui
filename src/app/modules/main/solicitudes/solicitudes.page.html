@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-back-sharp"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Crear Solicitudes</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item>
+            <ion-select placeholder="Tipo de Solicitud">
+              <ion-select-option value="1">Parqueadero</ion-select-option>
+              <ion-select-option value="2">Bicicleta</ion-select-option>
+              <ion-select-option value="3">Ingreso</ion-select-option>
+              <ion-select-option value="4">Trasteo</ion-select-option>
+              <ion-select-option value="5">Alquiler salon comunal</ion-select-option>
+              <ion-select-option value="6">pago administración</ion-select-option>
+              <ion-select-option value="7">cobros</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="full">
+          <ion-label position="floating">Bloque</ion-label>
+          <ion-input type="text" required [(ngModel)]="bloque"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="full">
+          <ion-label position="floating">Apartamento</ion-label>
+          <ion-input type="text" required [(ngModel)]="apartamento"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="full">
+          <ion-label position="floating">Descripción</ion-label>
+          <ion-textarea placeholder="Descripción" [(ngModel)]="descripcion"></ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block" (click)="crearSolicitud()">Aceptar</ion-button>        
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
