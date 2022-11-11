@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
-
+import { UserModel } from '../../share/models/User/UserModel';
+import { AlertService } from '../../share/services/alert/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -11,17 +11,23 @@ import { AlertController } from '@ionic/angular';
 
 export class LoginPage implements OnInit {
 
-  token: string = '123456';
-  tokenAdmin: string = '1234567';
+  // token: string = '123456';
+  // tokenAdmin: string = '1234567';
   correo: string;
   contrasena: string;
-  rememberToggle: boolean
+  _correo: string;
+  _contrasena: string;
+  user: UserModel = {};
 
-  constructor(private router: Router, private alert: AlertController) { }
+  // rememberToggle: boolean
+
+  constructor(private router: Router, private alert: AlertService) { }
 
   ngOnInit() {
-    // this.correo = localStorage.getItem('correo');
-    // this.contrasena = localStorage.getItem('contrasena');
+    this._correo = localStorage.getItem('correo');
+    this._contrasena = localStorage.getItem('contrasena');
+
+    this.user = JSON.parse(localStorage.getItem("SessionUser"));
 
     // if (this.contrasena !== "" && this.correo !== "") {
     //   this.rememberToggle = true
@@ -29,22 +35,17 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    if (this.contrasena !== "" && this.correo !== "") {
-      if (this.token === this.contrasena) {
-        localStorage.setItem('token', this.token);
+    if ((this.contrasena !== "" && this.correo !== "") && (this.contrasena !== undefined && this.correo !== undefined)) {
+      if (this.user.password === this.contrasena && this.user.email === this.correo) {
         localStorage.setItem('correo', this.correo);
         localStorage.setItem('contrasena', this.contrasena);
 
-        console.log('token', this.token);
-        console.log('correo', this.correo);
-
         this.router.navigate(["/main"]);
       } else {
-        this.presentAlert("Datos incorrectos");
-        console.log("Datos incorrectos");
+        this.alert.basicAlert("Información", "Usuario no registrado / Datos incorrectos", ['Ok']);
       }
     } else {
-      this.presentAlert("Diligencie los campos");
+      this.alert.basicAlert("Información", "Diligencie los campos", ['Ok']);
     }
   }
 
@@ -63,14 +64,14 @@ export class LoginPage implements OnInit {
     }
   }
 
-  async presentAlert(Input_message) {
-    const alert = await this.alert.create({
-      header: 'Información',
-      subHeader: '',
-      message: Input_message,
-      buttons: ['OK'],
-    });
+  // async presentAlert(Input_message) {
+  //   const alert = await this.alert.create({
+  //     header: 'Información',
+  //     subHeader: '',
+  //     message: Input_message,
+  //     buttons: ['OK'],
+  //   });
 
-    await alert.present();
-  }
+  //   await alert.present();
+  // }
 }

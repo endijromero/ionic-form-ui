@@ -7,6 +7,33 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding class="tab5-content">
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item *ngFor="let var of _ListaSolicitudModel">
+          {{var}}
 
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+
+  <ion-grid fixed>
+    <ion-row>
+      <!-- <ion-col col-auto class="cell-class">Solicitante</ion-col> -->
+      <!-- <ion-col col-auto class="cell-class">Descripción</ion-col> -->
+      <!-- <ion-col col-auto class="cell-class">Estado</ion-col> -->
+
+      <ion-col class="bgcolor" text-center><b>Solicitante</b></ion-col>
+      <ion-col class="bgcolor" text-center><b>Descripción</b></ion-col>
+      <ion-col class="bgcolor" text-center><b>Estado</b></ion-col>
+    </ion-row>
+    <ion-row *ngFor="let cus of _ListaSolicitudModel">
+      <ion-col col-auto class="cell-class">{{ cus.bloque }} - {{ cus.apartamento }}</ion-col>
+      <ion-col col-auto class="cell-class">{{ cus.descripcion }}</ion-col>
+      <ion-col col-auto class="cell-class">{{ cus.estado }}</ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
